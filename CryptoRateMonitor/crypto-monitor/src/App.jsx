@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import Home from './pages/Home/Home.jsx';
 import Coin from './pages/Coin/Coin.jsx';
 
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
 function App() {
   
   return (
-    <div className='min-h-[100vh] bg-gray-900 text-white'>
+    <div className='min-h-[100vh] bg-gray-950 text-white'>
       <RouterProvider router={router} />
     </div>
   )
