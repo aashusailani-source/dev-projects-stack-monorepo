@@ -100,6 +100,23 @@ exports.login = async (req, res) => {
     }
 }
 
+// get user profile
+exports.getUserProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        return res.json({
+            success: true,
+            user,
+            message: 'User profile fetched successfully',
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: error.message,
+        })
+    }
+}
+
 exports.logout = async (req, res) => {
     return res.status(200).json({
         success: true,

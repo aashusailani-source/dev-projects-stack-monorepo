@@ -20,6 +20,10 @@ app.use(cookieParser());
 // Database Connection
 connectDB();
 
+app.get('/', (req, res) => {
+    res.send('Hello World, Backend is running');
+})
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);

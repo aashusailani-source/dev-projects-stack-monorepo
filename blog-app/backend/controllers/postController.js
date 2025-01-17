@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 exports.getPosts = async (req, res) => {
     try {
         const posts = await Post.find()
-        .populate('author', 'username').sort({ createdAt: -1 });
+        .populate('author', 'username email').sort({ createdAt: -1 });
         if(posts.length == 0){
             return res.status(404).json({
                 success: false,
