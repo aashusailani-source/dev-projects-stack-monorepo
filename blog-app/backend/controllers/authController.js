@@ -100,6 +100,13 @@ exports.login = async (req, res) => {
     }
 }
 
+exports.logout = async (req, res) => {
+    return res.status(200).json({
+        success: true,
+        message: 'Logged out successfully',
+    })
+}
+
 exports.deleteAccount = async (req, res) => {
     try {
         const userId = req.user.id;

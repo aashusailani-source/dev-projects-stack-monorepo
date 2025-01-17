@@ -2,13 +2,12 @@ require('dotenv').config();
 const express = require('express'); 
 const { connectDB } = require('./connection/databaseConnection');
 const cors = require('cors');
-const cookiParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 // Importing Routes
 const authRoutes = require('./routes/authRoutes');
 const postRoutes = require('./routes/postRoutes');
-const cookieParser = require('cookie-parser');
 
 // Initialize app
 const app = express();

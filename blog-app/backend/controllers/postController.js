@@ -1,10 +1,12 @@
 const Post = require('../models/postSchema');
+const mongoose = require('mongoose')
 // const User = require('../models/userSchema');
 
 // Function to get all posts
 exports.getPosts = async (req, res) => {
     try {
-        const posts = await Post.find().sort({ createdAt: -1 });
+        const posts = await Post.find()
+        .populate('author', 'username').sort({ createdAt: -1 });
         if(posts.length == 0){
             return res.status(404).json({
                 success: false,
@@ -46,6 +48,33 @@ exports.getPostById = async (req, res) => {
         })
     }
 }
+
+// Function to get post by author (authentication required)
+exports.getPostsByAuthor = async (req, res) => {
+    console.log("hello")
+    const authorId  = req.user.id;
+    console.log("authorId ", authorId);
+    try {
+        const posts = await Post.find({ author: authorId })
+        .sort({ createdAt: -1 });
+        if (posts.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "No posts found for this author",
+            });
+        }
+
+        return res.json({
+            success: true,
+            posts,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: error.message,
+        });
+    }
+};
 
 // Function to create a new post (authentication required)
 exports.createPost = async (req, res) => {
