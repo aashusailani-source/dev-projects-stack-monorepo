@@ -47,7 +47,7 @@ function Posts() {
             onClick={() => navigate("/dashboard/posts/create")}
             className="mt-4 bg-blue-500 hover:bg-blue-700 cursor-pointer text-white font-bold py-2 px-6 rounded-lg shadow-md focus:outline-none focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 transition duration-300"
           >
-            {posts.length > 0 ? "Create Another Post" : "Login or SignUp to create a post"}
+            {posts.length > 0 ? "Login or SignUp to Create Another Post" : "Login or SignUp to create a post"}
           </button>
         ) : (
           <span
