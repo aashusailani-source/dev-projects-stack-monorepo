@@ -7,41 +7,28 @@ import CreatePost from "./pages/dashboard/CreatePost";
 import UpdatePost from "./pages/dashboard/UpdatePost";
 import DeletePost from "./pages/dashboard/DeletePost";
 import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
+import Profile from "./pages/dashboard/Profile";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Signup />,
-  },
-  {
-    path: "/signup",
-    element: <Signup />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/dashboard/posts",
-    element: <Posts />,
-  },
-  {
-    path: "/dashboard/posts/create",
-    element: <CreatePost />,
-  },
-  {
-    path: "/dashboard/posts/update/:id",
-    element: <UpdatePost />,
-  },
-  {
-    path: "/dashboard/posts/delete/:id",
-    element: <DeletePost />,
+    element: <Layout />, // Wrap routes with the Layout component
+    children: [
+      {path: "/", element: <Posts/>},
+      { path: "/signup", element: <Signup /> },
+      { path: "/login", element: <Login /> },
+      { path: "/dashboard/posts", element: <Posts /> },
+      { path: "/dashboard/posts/create", element: <CreatePost /> },
+      { path: "/dashboard/posts/update/:id", element: <UpdatePost /> },
+      { path: "/dashboard/posts/delete/:id", element: <DeletePost /> },
+      { path: "/dashboard/profile", element: <Profile /> },
+    ],
   },
 ]);
 
 const App = () => {
   return <div>
-    <Navbar/> {/* use layout to fix the error */}
     <RouterProvider router={router} />
   </div>
 };

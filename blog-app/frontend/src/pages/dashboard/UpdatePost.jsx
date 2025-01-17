@@ -24,7 +24,7 @@ function UpdatePost() {
       }
 
       const response = await axios.put(
-        `http://localhost:4000/api/posts/update/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/posts/update/${id}`,
         formData,
         {
           headers: {
@@ -33,7 +33,7 @@ function UpdatePost() {
         }
       );
       console.log(response.data);
-      console.log("post updated successfully");
+      console.log("Post updated successfully");
       navigate("/dashboard/posts");
     } catch (error) {
       console.log(error.response?.data?.message || "Failed to update post");
@@ -41,18 +41,18 @@ function UpdatePost() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 transition duration-300">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg"
+        className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 w-full max-w-lg"
       >
-        <h1 className="text-3xl font-bold text-center text-gray-700 mb-6">
+        <h1 className="text-3xl font-bold text-center text-gray-700 dark:text-gray-100 mb-6">
           Update Post
         </h1>
         <div className="mb-4">
           <label
             htmlFor="title"
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 dark:text-gray-200 text-sm font-medium mb-2"
           >
             Title
           </label>
@@ -61,14 +61,14 @@ function UpdatePost() {
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-300"
+            className="block w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring focus:ring-blue-500"
             placeholder="Enter title"
           />
         </div>
         <div className="mb-6">
           <label
             htmlFor="content"
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 dark:text-gray-200 text-sm font-medium mb-2"
           >
             Content
           </label>
@@ -77,14 +77,14 @@ function UpdatePost() {
             name="content"
             value={formData.content}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-300"
+            className="block w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring focus:ring-blue-500"
             placeholder="Enter content"
           />
         </div>
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
           >
             Update
           </button>
