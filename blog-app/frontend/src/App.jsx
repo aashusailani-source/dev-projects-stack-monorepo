@@ -1,4 +1,3 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
@@ -6,7 +5,6 @@ import Posts from "./pages/dashboard/Posts";
 import CreatePost from "./pages/dashboard/CreatePost";
 import UpdatePost from "./pages/dashboard/UpdatePost";
 import DeletePost from "./pages/dashboard/DeletePost";
-import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
 import Profile from "./pages/dashboard/Profile";
 

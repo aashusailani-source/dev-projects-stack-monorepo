@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
@@ -16,7 +15,12 @@ function Navbar() {
 
   return (
     <div className="flex justify-between items-center p-4 bg-gray-200 dark:bg-gray-800 dark:text-gray-200">
-      <h1 className="text-2xl font-bold">Navbar</h1>
+      <div className='flex gap-2 items-center justify-center'>
+        <Link to='/' className='flex gap-2 items-center justify-center'>
+          <img src="/assets/blogBuzz.webp" className='w-8 rounded-xl' alt="" /> 
+          <h1 className="text-2xl font-bold">Blog Buzz</h1>
+        </Link>
+      </div>
       <ul className="flex items-center gap-4">
         <li>
           <Link className="hover:text-blue-500 dark:hover:text-blue-300" to="/">
