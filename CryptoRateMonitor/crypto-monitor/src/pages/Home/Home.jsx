@@ -4,6 +4,28 @@ import { CoinContext } from "../../context/CoinContext";
 function Home() {
   const { allCoin, currency } = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState(allCoin);
+  const [input, setInput] = useState('');
+
+  const inputHander = (e) => {
+    setInput(e.target.value);
+    if(e.target.value === ''){
+      setDisplayCoin(allCoin);
+    }else{
+      const filteredCoin = allCoin.filter((coin) => {
+        return coin.name.toLowerCase().includes(input.toLowerCase());
+      });
+      setDisplayCoin(filteredCoin);
+    }
+  }
+
+  // const searchHandler = (e) => {
+  //   e.preventDefault();
+  //   const filteredCoin = allCoin.filter((coin) => {
+  //     return coin.name.toLowerCase().includes(input.toLowerCase());
+  //   });
+  //   setDisplayCoin(filteredCoin);
+  // }
+
 
   useEffect(() => {
     setDisplayCoin(allCoin);
@@ -23,10 +45,12 @@ function Home() {
         {/* Search Form */}
         <form className="rounded-2xl w-[80%] bg-transparent text-white flex justify-between items-center gap-5 p-1">
           <input
-            className="flex-1 p-3 text-[16px] text-gray-600 placeholder-gray-400 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            className="flex-1 p-3 text-[16px] text-gray-300 placeholder-gray-400 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-black"
             type="text"
             id="search"
             name="search"
+            value={input}
+            onChange={inputHander}
             placeholder="Search Crypto..."
           />
           <button
@@ -39,7 +63,7 @@ function Home() {
       </div>
 
       {/* Coin Display */}
-      <div className="max-w-[800px] m-auto border-2 rounded-2xl">
+      <div className="max-w-[1000px] m-auto border-2 rounded-2xl">
         {/* Header for Coin Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-white border-b   gap-2 text-white font-semibold bg-gradient-to-r from-indigo-700 via-purple-900 to-pink-800 p-2 rounded-t-2xl shadow-lg">
           <p className="p-2 text-center cursor-pointer bg-gray-800 rounded-2xl hover:bg-gray-700 transition-colors">#</p>
@@ -86,7 +110,7 @@ function Home() {
                     : 'bg-green-500 text-white'
                 } px-2 py-1 rounded-full`}
               >
-                {Math.floor(item.price_change_percentage_24h * 100) / 100}%
+                {Math.floor(item.price_change_percentage_24h * 100) / 1000}%
               </p>
             </div>
 
