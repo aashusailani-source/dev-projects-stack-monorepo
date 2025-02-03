@@ -37,7 +37,9 @@ function Navbar() {
 
       {/* Desktop Navigation Links */}
       <ul className='hidden sm:flex gap-12 list-none'>
-        <li className="text-lg hover:text-gray-400 cursor-pointer transition-all">Home</li>
+        <Link to={'/'} >
+          <li className="text-lg hover:text-gray-400 cursor-pointer transition-all">Home</li>
+        </Link>
         <li className="text-lg hover:text-gray-400 cursor-pointer transition-all">Features</li>
       </ul>
 

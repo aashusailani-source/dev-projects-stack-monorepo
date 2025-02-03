@@ -17,7 +17,7 @@ const router = createBrowserRouter([
       ),
     },
     {
-      path: "/coin/:id",
+      path: "/coin/:coinId",
       element: (
         <>
           <Navbar />
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
 function App() {
   
   return (
-    <div className='min-h-[100vh] bg-gray-950 text-white'>
+    <div className='min-h-screen bg-gray-950 text-white'>
       <RouterProvider router={router} />
     </div>
   )
