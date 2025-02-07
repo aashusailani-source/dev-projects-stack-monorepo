@@ -128,7 +128,7 @@ function Home() {
             </Link>
           ))
         ) : (
-          <p className="text-center text-gray-400 py-5">No coins found.</p>
+          <p className="text-center text-gray-400 py-5">No coins data found.</p>
         )}
       </div>
     </div>
